@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Register Page </title>
+    <style>
+        .compulsory-red{
+            color: red;
+        }
+        
+        .header{
+            background-color: dimgray;
+            color: white;
+        }
+        
+        .submit{
+            width: 80px;
+            height: 40px;
+            font-weight: 900;
+            border: 1px solid black;
+        }
+        
+
+        .container-swap{
+            width: 500px;
+        }
+        .left-form{
+            width: 150px;
+            float: left;
+            text-align: center;
+        }
+
+        .right-form{
+            width: 200px;
+            float: left;
+            text-align: center;
+        }
+
+    </style>
+    </head>    
+<body>
+    
+  
+<h1> Register </h1>
+
+<div class="header">
+    <form action="sendInfo" method="POST">
+    
+        <label>Name<span class="compulsory-red" > * </span> </label>
+        <div class="container-swap">
+            <div class="left-form"><input type="text" id="fname" name="fname" placeholder="First" > </div>
+            <div class="right-form"><input type="text" id="lname" name="lname" placeholder="Last" class="left-form" > </div>
+        </div>
+        <br>
+       <br> <label>Username <span class="compulsory-red" > * </span> </label> <br>
+        <input type="text" id="username" name="username" > <br>
+        <label >Email<span class="compulsory-red" > * </span> </label> <br>
+        <input type="email" id="email" name="email" > <br>
+        <label >Password<span class="compulsory-red" > * </span> </label> <br>
+        <input type="password" id="pwd" name="pwd" > <br>
+        <label > Facebook </label> <br>
+        <input type="url" id="fb" name="fb"> <br>
+        <p>Enter your Facebook profile URL</p>
+        <label >Short Bio</label> <br>
+        <textarea name="textarea" id="" cols="50" rows="4"></textarea>
+        <p>Share a little information about yourself</p>
+        <input type="submit" class="submit" name="" id="" value="Submit">
+
+    
+</form>
+</div>
+</body>
+</html>

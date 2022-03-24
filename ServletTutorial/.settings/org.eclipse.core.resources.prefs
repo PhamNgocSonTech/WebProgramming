@@ -1,0 +1,11 @@
+eclipse.preferences.version=1
+encoding//src/com/servlet/tutorial/AnnotationExampleServlet.java=UTF-8
+encoding//src/com/servlet/tutorial/ExampleInfoServlet.java=UTF-8
+encoding//src/com/servlet/tutorial/ForwardDemoServlet.java=UTF-8
+encoding//src/com/servlet/tutorial/HelloServlet.java=UTF-8
+encoding//src/com/servlet/tutorial/InitParamServlet.java=UTF-8
+encoding//src/com/servlet/tutorial/MyDefaultServlet.java=UTF-8
+encoding//src/com/servlet/tutorial/other/RedirectDemoServlet.java=UTF-8
+encoding//src/com/servlet/tutorial/other/ShowMeServlet.java=UTF-8
+encoding//src/com/servlet/tutorial/session/LoginServlet.java=UTF-8
+encoding//src/com/servlet/tutorial/session/UserInfoServlet.java=UTF-8

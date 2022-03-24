@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//src/tutorial/simpleweb/conn/ConnectionUtils.java=UTF-8
+encoding//src/tutorial/simpleweb/conn/SQLServerConnUtils_SQLJDBC.java=UTF-8
+encoding//src/tutorial/simpleweb/filter/CookieFilter.java=UTF-8
+encoding//src/tutorial/simpleweb/filter/JDBCFilter.java=UTF-8
+encoding//src/tutorial/simpleweb/servlet/HomeServlet.java=UTF-8
+encoding//src/tutorial/simpleweb/servlet/LoginServlet.java=UTF-8
+encoding//src/tutorial/simpleweb/servlet/ProductListServlet.java=UTF-8
+encoding//src/tutorial/simpleweb/servlet/UserInfoServlet.java=UTF-8
+encoding//src/tutorial/simpleweb/utils/MyUtils.java=UTF-8
