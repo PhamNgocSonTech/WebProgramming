@@ -33,12 +33,13 @@
 <!-- //org.glassfish.jersey.servlet.ServletContainer; -->
 
 	
+	<!--Cấu hình Jersey cho RESTful API trong xml  -->
 	<servlet>
         <servlet-name>jerseyServlet</servlet-name>
         <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
         <init-param>
             <param-name>com.sun.jersey.config.property.packages</param-name>
-            <param-value>tutorial.simpleweb.restfulcrud.service</param-value>
+            <param-value>tutorial.simpleweb.rest.service</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup> 
     </servlet>
