@@ -11,6 +11,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Invocation;
+import javax.ws.rs.client.WebTarget;
 
 import tutorial.simpleweb.conn.SQLServerConnUtils_SQLJDBC;
 import tutorial.simpleweb.utils.DBUtils;
@@ -47,8 +51,14 @@ public class DeleteProductServlet extends HttpServlet {
 		String errorString = null;
 		
 		try {
-			DBUtils.deleteProduct(conn, code);
-		} catch (SQLException e) {
+			Client client = ClientBuilder.newClient();
+			WebTarget webTarget = client
+					.target("http://localhost:8080/MyFirstProject/rest/")
+					
+					.path("products/" + code );
+			Invocation.Builder invoBuilder = webTarget.request();
+			invoBuilder.delete();			
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			errorString = e.getMessage();

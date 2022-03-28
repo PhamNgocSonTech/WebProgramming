@@ -10,6 +10,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.Invocation;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import tutorial.simpleweb.beans.Product;
 import tutorial.simpleweb.conn.SQLServerConnUtils_SQLJDBC;
@@ -45,7 +52,7 @@ public class CreateProductServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//Connection conn = MyUtils.getStoredConnection(request);
-		Connection conn=null;
+		Connection conn = null;
 		try {
 			conn=SQLServerConnUtils_SQLJDBC.getSQLServerConnUtils_SQLJDBC();
 		} catch (ClassNotFoundException e1) {
@@ -74,8 +81,14 @@ public class CreateProductServlet extends HttpServlet {
 		String errorString = null;
 		if (errorString == null) {
 			try {
-				DBUtils.insertProduct(conn, product);
-			} catch (SQLException e) {
+				//DBUtils.insertProduct(conn, product);
+				Client client = ClientBuilder.newClient();
+				WebTarget webTarget = client.target("http://localhost:8080/DemoRest/rest/")
+									.path("products/add");
+				Invocation.Builder invoBuilder= webTarget
+						.request(MediaType.APPLICATION_JSON);
+				Response res = invoBuilder.post(Entity.entity(product, MediaType.APPLICATION_JSON));
+			} catch (Exception e) {
 				e.printStackTrace();
 				errorString = e.getMessage();
 			}

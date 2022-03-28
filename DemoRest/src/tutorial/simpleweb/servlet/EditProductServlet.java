@@ -10,6 +10,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.Invocation;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import tutorial.simpleweb.beans.Product;
 import tutorial.simpleweb.conn.SQLServerConnUtils_SQLJDBC;
@@ -98,8 +105,17 @@ public class EditProductServlet extends HttpServlet {
 		String errorString = null;
 
 		try {
-			DBUtils.updateProduct(conn, product);
-		} catch (SQLException e) {
+			//DBUtils.updateProduct(conn, product);
+			Client client = ClientBuilder.newClient();
+			WebTarget webTarget = client
+					.target("http://localhost:8080/DemoRest/rest/")
+					.path("edit");
+			Invocation.Builder invoBuilder = webTarget
+					.request(MediaType.APPLICATION_JSON);
+			Response rs = invoBuilder
+					.put(Entity.
+							entity(product, MediaType.APPLICATION_JSON));
+		} catch (Exception e) {
 			e.printStackTrace();
 			errorString = e.getMessage();
 		}

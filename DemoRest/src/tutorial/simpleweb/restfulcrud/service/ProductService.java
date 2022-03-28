@@ -24,7 +24,12 @@ public class ProductService {
 public String hello() {
 	return "Hello Baby";
 }
-
+@Path("/json")
+@GET
+@Produces(MediaType.APPLICATION_JSON)
+public String demoJsonHello() {
+    return "{\"name\":\"greeting\", \"message\":\"Bonjour tout le monde!\"}";
+}
  @Path("/all")//http://localhost:8080/SimpleWepApp/rest/products/all
  @GET
  @Produces(MediaType.APPLICATION_JSON)
@@ -45,8 +50,9 @@ try {
  }
  
  @POST
- @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
- public void addEmployee(Product pro) {
+ @Path("/add")
+ @Produces(MediaType.APPLICATION_JSON)
+ public void addProduct(Product pro) {
 		 Connection conn;
 	 try {
 			conn = SQLServerConnUtils_SQLJDBC.getSQLServerConnUtils_SQLJDBC();
@@ -60,15 +66,15 @@ try {
      
  }
 
- // URI:
- // /contextPath/servletPath/employees
+ 
  @PUT
- @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
- public void updateEmployee(String pro) {
+ @Path("/edit")
+ @Produces(MediaType.APPLICATION_JSON)
+ public void updateProduct(Product pro) {
 	 Connection conn;
 	 try {
 			conn = SQLServerConnUtils_SQLJDBC.getSQLServerConnUtils_SQLJDBC();
-			DBUtils.findProduct(conn, pro);
+			DBUtils.updateProduct(conn, pro);
 
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
@@ -79,12 +85,12 @@ try {
 
  @DELETE
  @Path("/{del}")
- @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
- public void deleteEmployee(@PathParam("empNo") String empNo) {
+ @Produces(MediaType.APPLICATION_JSON)
+ public void deleteProduct(@PathParam("code") String code) {
 	 Connection conn;
 	 try {
 			conn = SQLServerConnUtils_SQLJDBC.getSQLServerConnUtils_SQLJDBC();
-		    DBUtils.deleteProduct(conn, empNo);
+		    DBUtils.deleteProduct(conn, code);
 
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
